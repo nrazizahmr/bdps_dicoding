@@ -59,32 +59,32 @@ Dashboard ini dibuat untuk membantu tim HR mendapatkan pemahaman menyeluruh terk
 - Menganalisis berbagai aspek seperti lembur, tingkat kepuasan kerja, serta karakteristik demografis yang berpotensi berpengaruh terhadap attrition.
 - Mengambil langkah-langkah preventif guna meningkatkan retensi karyawan dan menekan biaya akibat pergantian tenaga kerja.
 
-    <img src="https://raw.githubusercontent.com/nrazizahmr/bdps_dicoding/Submission1/images/dashboard.PNG">
+    <img src="https://raw.githubusercontent.com/nrazizahmr/bdps_dicoding/main/Submission1/images/dashboard.PNG" width="500">
 
 ## Conclusion
 
 1. Seberapa tinggi tingkat attrition di perusahaan ini?
     * Jawaban: Tingkat attrition di perusahaan ini adalah sekitar 17%. Ini berarti bahwa satu dari enam karyawan meninggalkan perusahaan dalam jangka waktu tertentu, menunjukkan bahwa tingkat keluar karyawan cukup signifikan.
 
-    <img src="https://raw.githubusercontent.com/nrazizahmr/bdps_dicoding/Submission1/images/attrition.PNG" width="500">
+    <img src="https://raw.githubusercontent.com/nrazizahmr/bdps_dicoding/main/Submission1/images/attrition.PNG" width="500">
 
 2. Faktor-faktor apa saja yang mempengaruhi keputusan karyawan untuk meninggalkan perusahaan?
     * Jawaban: Beberapa faktor utama yang mempengaruhi keputusan karyawan untuk meninggalkan perusahaan meliputi:
         * Overtime: Karyawan yang sering bekerja lembur cenderung memiliki kemungkinan lebih tinggi untuk keluar dari perusahaan.
         * Status Perkawinan: Karyawan yang berstatus Single cenderung memiliki tingkat attrition yang lebih tinggi, kemungkinan karena mereka lebih fleksibel untuk berpindah dan lebih terbuka terhadap peluang karier baru.
 
-    <img src="https://raw.githubusercontent.com/nrazizahmr/bdps_dicoding/Submission1/images/factorattrition.png" width="500">
+    <img src="https://raw.githubusercontent.com/nrazizahmr/bdps_dicoding/main/Submission1/images/factorattrition.png" width="500">
 
 3. Apakah ada perbedaan tingkat attrition berdasarkan role atau departemen tertentu di perusahaan?
     * Jawaban: Ya, terdapat perbedaan tingkat attrition berdasarkan role dan departemen. Misalnya, role seperti Sales Representative dan departemen seperti Sales menunjukkan tingkat attrition yang lebih tinggi dibandingkan dengan posisi atau departemen lainnya. Ini mengindikasikan bahwa faktor seperti beban kerja, tingkat stres, dan kemungkinan struktur kompensasi di area tersebut dapat memengaruhi keputusan karyawan untuk keluar dari perusahaan.
 
-    <img src="https://raw.githubusercontent.com/nrazizahmr/bdps_dicoding/Submission1/images/attritionby_jobrole.PNG" width="500">
-    <img src="https://raw.githubusercontent.com/nrazizahmr/bdps_dicoding/Submission1/images/attritionby_department.PNG" width="500">
+    <img src="https://raw.githubusercontent.com/nrazizahmr/bdps_dicoding/main/Submission1/images/attritionby_jobrole.PNG" width="500">
+    <img src="https://raw.githubusercontent.com/nrazizahmr/bdps_dicoding/main/Submission1/images/attritionby_department.PNG" width="500">
 
 4. Bagaimana pengaruh overtime terhadap keputusan karyawan untuk keluar dari perusahaan?
     * Jawaban: Lembur memiliki pengaruh signifikan terhadap keputusan karyawan untuk meninggalkan perusahaan. Data menunjukkan bahwa karyawan yang sering bekerja lembur (overtime) memiliki tingkat attrition yang lebih tinggi. Ini mungkin terkait dengan tingkat stres yang lebih tinggi dan ketidakseimbangan antara kehidupan kerja dan pribadi.
     
-    <img src="https://raw.githubusercontent.com/nrazizahmr/bdps_dicoding/Submission1/images/attritionby_overtime.PNG" width="500">
+    <img src="https://raw.githubusercontent.com/nrazizahmr/bdps_dicoding/main/Submission1/images/attritionby_overtime.PNG" width="500">
 
 ### Rekomendasi Action Items (Optional)
 
