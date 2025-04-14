@@ -61,7 +61,7 @@ Dashboard ini dibuat untuk memberikan pemahaman menyeluruh kepada institusi meng
 - Menganalisis Penyebab Potensial Dropout:
     Dashboard ini juga menyajikan analisis mendalam mengenai pengaruh faktor-faktor seperti prestasi akademik, keberadaan beasiswa, biaya kuliah, serta latar belakang pendidikan orang tua terhadap status siswa. Dengan informasi ini, institusi dapat mengidentifikasi risiko lebih awal dan menyesuaikan kebijakan maupun strategi intervensi secara lebih efektif.
 
-    <img src="https://raw.githubusercontent.com/nrazizahmr/bpds_dicoding/main/Submission2/images/dashboard.PNG">
+    <img src="https://raw.githubusercontent.com/nrazizahmr/bpds_dicoding/blob/main/Submission2/images/dashboard.PNG">
 
 ## Menjalankan Sistem Machine Learning
 
@@ -69,9 +69,9 @@ Jelaskan cara menjalankan protoype sistem machine learning yang telah dibuat. Se
 
 Pada proyek ini telah disediakan sebuah prototype untuk melakukan prediksi terhadap model yang sudah dibuat. Untuk menjalankan protoype secara lokal jalankan perintah berikut di terminal: streamlit run app.py
 
-Atau buka [Streamlit]([https://github.com/dicodingacademy/dicoding_dataset/tree/main/students_performance](https://bdpsdicoding-proyekinstitut.streamlit.app/)) untuk membuka prototype yang sudah dijalankan pada streamlit community.
+Atau buka [Streamlit](https://bdpsdicoding-proyekinstitut.streamlit.app/) untuk membuka prototype yang sudah dijalankan pada streamlit community.
 
-    <img src="https://raw.githubusercontent.com/nrazizahmr/bpds_dicoding/main/Submission2/images/streamlit.PNG">
+<img src="https://raw.githubusercontent.com/nrazizahmr/bpds_dicoding/blob/main/Submission2/images/streamlit.PNG">
 
 ## Conclusion
 
@@ -84,7 +84,7 @@ Proyek ini dirancang untuk menjawab sejumlah tantangan utama yang dihadapi oleh 
 
     Analisis korelasi dan pentingnya fitur dalam model prediktif menunjukkan bahwa beberapa faktor yang paling berpengaruh terhadap keputusan siswa untuk dropout antara lain latar belakang akademik (seperti nilai dan jumlah unit yang diambil) dan kondisi ekonomi (scholarship ataupun displaced) . Misalnya, siswa yang menghadapi kesulitan akademik dalam semester pertama atau kedua cenderung memiliki risiko lebih tinggi untuk dropout.
    
-        <img src="https://raw.githubusercontent.com/nrazizahmr/bpds_dicoding/main/Submission2/images/correlated.PNG">
+   <img src="https://raw.githubusercontent.com/nrazizahmr/bpds_dicoding/blob/main/Submission2/images/correlated.PNG">
    
 4. Apa saja langkah yang bisa diambil untuk meningkatkan retensi siswa dan mendorong lebih banyak siswa menyelesaikan pendidikannya?
 
