@@ -3,6 +3,9 @@ import pandas as pd
 import numpy as np
 import joblib
 
+model = joblib.load('Submission2/svm_model.joblib')
+scaler = joblib.load('Submission2/scaler.pkl')
+
 def predict_status(inputs):
     # Convert input ke array dan reshape untuk model
     input_array = np.array(inputs).reshape(1, -1)
