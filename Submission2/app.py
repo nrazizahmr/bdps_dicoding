@@ -4,9 +4,9 @@ import numpy as np
 import joblib
 
 # Load model, scaler, dan expected_features
-model = joblib.load('svm_model.joblib')
-scaler = joblib.load('scaler.pkl')
-expected_features = joblib.load('expected_features.pkl')
+model = joblib.load('Submission2/svm_model.joblib')
+scaler = joblib.load('Submission2/scaler.pkl')
+expected_features = joblib.load('Submission2/expected_features.pkl')
 
 st.title('🎓 Student Dropout Prediction')
 
