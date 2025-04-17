@@ -2,8 +2,8 @@ import streamlit as st
 import joblib
 import numpy as np
 
-model = joblib.load('./Submission2/model/svm_model.joblib')
-scaler = joblib.load('./Submission2/model/scaler.pkl')
+model = joblib.load('./Submission2/svm_model.joblib')
+scaler = joblib.load('./Submission2/scaler.pkl')
 
 def predict_status(inputs):
     input_array = np.array(inputs).reshape(1, -1)
