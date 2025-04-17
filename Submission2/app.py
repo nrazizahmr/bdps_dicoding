@@ -4,9 +4,9 @@ import numpy as np
 import joblib
 
 # Load model, scaler, dan expected_features
-model = joblib.load('model/svm_model.joblib')
-scaler = joblib.load('model/scaler.pkl')
-expected_features = joblib.load('model/expected_features.pkl')  # list of expected column names
+model = joblib.load('svm_model.joblib')
+scaler = joblib.load('scaler.pkl')
+expected_features = joblib.load('expected_features.pkl')
 
 st.title('🎓 Student Dropout Prediction')
 
@@ -32,7 +32,6 @@ with st.form("input_form"):
 
 # Prediksi
 if submit:
-    # Siapkan data input
     input_dict = {
         'Gender': gender,
         'Nationality': nationality,
@@ -52,16 +51,11 @@ if submit:
 
     # One-hot encoding
     input_df_encoded = pd.get_dummies(input_df)
-
-    # Tambahkan kolom yang tidak ada
     for col in expected_features:
         if col not in input_df_encoded.columns:
             input_df_encoded[col] = 0
-
-    # Pastikan urutan kolom sama
     input_df_encoded = input_df_encoded[expected_features]
 
-    # Transformasi & prediksi
     input_scaled = scaler.transform(input_df_encoded)
     prediction = model.predict(input_scaled)[0]
 
