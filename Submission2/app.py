@@ -44,16 +44,7 @@ input_data = [
 
 # Button for prediction
 if st.button('Predict'):
-    prediction = predict_status(input_data)
+    prediction = predict_status(input_data)  # prediction = 0, 1, atau 2
 
-    # The prediction will be a 2D array where each column corresponds to one of the classes
-    status_dict = {
-        0: 'Dropout',
-        1: 'Enrolled',
-        2: 'Graduate'
-    }
-    # Find the index of the maximum predicted value
-    predicted_status_index = np.argmax(prediction, axis=1)[0]
-    predicted_status = status_dict[predicted_status_index]
-
-    st.write(f"The model predicts that the student is likely to be: **{predicted_status}**")
+    status_map = {0: 'Dropout', 1: 'Enrolled', 2: 'Graduate'}
+    st.success(f"The model predicts the student is likely to be: **{status_map.get(prediction, prediction)}**")
