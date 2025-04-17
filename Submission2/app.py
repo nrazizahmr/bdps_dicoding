@@ -1,50 +1,71 @@
 import streamlit as st
-import joblib
+import pandas as pd
 import numpy as np
+import joblib
 
-model = joblib.load('./Submission2/svm_model.joblib')
-scaler = joblib.load('./Submission2/scaler.pkl')
+# Load model, scaler, dan expected_features
+model = joblib.load('model/svm_model.joblib')
+scaler = joblib.load('model/scaler.pkl')
+expected_features = joblib.load('model/expected_features.pkl')  # list of expected column names
 
-def predict_status(inputs):
-    input_array = np.array(inputs).reshape(1, -1)
-    input_array = scaler.transform(input_array)
-    prediction = model.predict(input_array)
-    return prediction
+st.title('🎓 Student Dropout Prediction')
 
-st.title('Student Dropout Prediction')
+# Form Input
+with st.form("input_form"):
+    st.subheader("Personal Information")
+    gender = st.selectbox('Gender', ['Male', 'Female'])
+    nationality = st.selectbox('Nationality', ['Portuguese', 'German', 'Spanish', 'Italian', 'Other'])
+    displaced = st.selectbox('Displaced', ['Yes', 'No'])
 
-curricular_units_2nd_sem_approved = st.number_input('Curricular Units 2nd Semester Approved', min_value=0, max_value=30, value=15)
-curricular_units_2nd_sem_grade = st.number_input('Curricular Units 2nd Semester Grade', min_value=0, max_value=20, value=15)
-curricular_units_1st_sem_approved = st.number_input('Curricular Units 1st Semester Approved', min_value=0, max_value=30, value=15)
-curricular_units_1st_sem_grade = st.number_input('Curricular Units 1st Semester Grade', min_value=0, max_value=20, value=15)
-tuition_fees_up_to_date = st.selectbox('Tuition Fees Up to Date', [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
-scholarship_holder = st.selectbox('Scholarship Holder', [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
-curricular_units_2nd_sem_enrolled = st.number_input('Curricular Units 2nd Semester Enrolled', min_value=0, max_value=30, value=20)
-curricular_units_1st_sem_enrolled = st.number_input('Curricular Units 1st Semester Enrolled', min_value=0, max_value=30, value=20)
-admission_grade = st.slider('Admission Grade', min_value=0.0, max_value=200.0, value=5.0, step=0.1)
-displaced = st.selectbox('Displaced', [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
+    st.subheader("Academic Information")
+    admission_grade = st.slider('Admission Grade', 0.0, 200.0, 150.0)
+    scholarship_holder = st.selectbox('Scholarship Holder', ['Yes', 'No'])
+    tuition_fees_up_to_date = st.selectbox('Tuition Fees Up to Date', ['Yes', 'No'])
+    curricular_units_1st_sem_enrolled = st.number_input('1st Semester Enrolled', 0, 30, 10)
+    curricular_units_1st_sem_approved = st.number_input('1st Semester Approved', 0, 30, 8)
+    curricular_units_1st_sem_grade = st.number_input('1st Semester Grade', 0.0, 20.0, 12.0)
+    curricular_units_2nd_sem_enrolled = st.number_input('2nd Semester Enrolled', 0, 30, 10)
+    curricular_units_2nd_sem_approved = st.number_input('2nd Semester Approved', 0, 30, 8)
+    curricular_units_2nd_sem_grade = st.number_input('2nd Semester Grade', 0.0, 20.0, 13.0)
 
-input_data = [
-    curricular_units_2nd_sem_approved,
-    curricular_units_2nd_sem_grade,
-    curricular_units_1st_sem_approved,
-    curricular_units_1st_sem_grade,
-    tuition_fees_up_to_date,
-    scholarship_holder,
-    curricular_units_2nd_sem_enrolled,
-    curricular_units_1st_sem_enrolled,
-    admission_grade,
-    displaced
-]
+    submit = st.form_submit_button("Predict")
 
-if st.button('Predict'):
-    prediction = predict_status(input_data)
-    status_dict = {
-        0: 'Dropout',
-        1: 'Enrolled',
-        2: 'Graduate'
+# Prediksi
+if submit:
+    # Siapkan data input
+    input_dict = {
+        'Gender': gender,
+        'Nationality': nationality,
+        'Displaced': 1 if displaced == 'Yes' else 0,
+        'Admission_grade': admission_grade,
+        'Scholarship_holder': 1 if scholarship_holder == 'Yes' else 0,
+        'Tuition_fees_up_to_date': 1 if tuition_fees_up_to_date == 'Yes' else 0,
+        'Curricular_units_1st_sem_enrolled': curricular_units_1st_sem_enrolled,
+        'Curricular_units_1st_sem_approved': curricular_units_1st_sem_approved,
+        'Curricular_units_1st_sem_grade': curricular_units_1st_sem_grade,
+        'Curricular_units_2nd_sem_enrolled': curricular_units_2nd_sem_enrolled,
+        'Curricular_units_2nd_sem_approved': curricular_units_2nd_sem_approved,
+        'Curricular_units_2nd_sem_grade': curricular_units_2nd_sem_grade
     }
-    predicted_status_index = np.argmax(prediction, axis=1)[0]
-    predicted_status = status_dict[predicted_status_index]
 
-    st.write(f"The model predicts that the student is likely to be: **{predicted_status}**")
+    input_df = pd.DataFrame([input_dict])
+
+    # One-hot encoding
+    input_df_encoded = pd.get_dummies(input_df)
+
+    # Tambahkan kolom yang tidak ada
+    for col in expected_features:
+        if col not in input_df_encoded.columns:
+            input_df_encoded[col] = 0
+
+    # Pastikan urutan kolom sama
+    input_df_encoded = input_df_encoded[expected_features]
+
+    # Transformasi & prediksi
+    input_scaled = scaler.transform(input_df_encoded)
+    prediction = model.predict(input_scaled)[0]
+
+    status_dict = {0: 'Dropout', 1: 'Enrolled', 2: 'Graduate'}
+    predicted_status = status_dict[prediction]
+
+    st.success(f"The model predicts that the student is likely to be: **{predicted_status}** 🎉")
