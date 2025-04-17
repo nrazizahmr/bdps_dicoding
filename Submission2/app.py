@@ -44,7 +44,7 @@ input_data = [
 
 # Button for prediction
 if st.button('Predict'):
-    prediction = predict_status(input_data)  # prediction = 0, 1, atau 2
+    prediction = int(predict_status(input_data))  # prediction = 0, 1, atau 2
 
     status_map = {0: 'Dropout', 1: 'Enrolled', 2: 'Graduate'}
     st.success(f"The model predicts the student is likely to be: **{status_map.get(prediction, prediction)}**")
